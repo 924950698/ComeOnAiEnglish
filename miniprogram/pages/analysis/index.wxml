@@ -1,0 +1,125 @@
+<!--发音分析页面-->
+<view class="container">
+  <!-- 顶部信息 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="title">发音分析</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <!-- 练习内容 -->
+  <view class="practice-text">
+    <view class="text-title">练习内容</view>
+    <view class="text-content">{{practiceText}}</view>
+  </view>
+
+  <!-- 总体评分 -->
+  <view class="overall-score">
+    <view class="score-circle">
+      <view class="score-number">{{overallScore}}</view>
+      <view class="score-label">总分</view>
+    </view>
+    <view class="score-level">{{scoreLevel}}</view>
+    <view class="score-feedback">{{scoreFeedback}}</view>
+  </view>
+
+  <!-- 详细分析 -->
+  <view class="detailed-analysis">
+    <view class="section-title">详细分析</view>
+    
+    <!-- 发音准确度 -->
+    <view class="analysis-item">
+      <view class="item-header">
+        <view class="item-title">发音准确度</view>
+        <view class="item-score">{{accuracyScore}}分</view>
+      </view>
+      <view class="item-bar">
+        <view class="bar-fill" style="width: {{accuracyScore}}%"></view>
+      </view>
+      <view class="item-details">
+        <view class="detail-item" wx:for="{{accuracyDetails}}" wx:key="id">
+          <view class="detail-word">{{item.word}}</view>
+          <view class="detail-status {{item.status}}">{{item.statusText}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 语音语调 -->
+    <view class="analysis-item">
+      <view class="item-header">
+        <view class="item-title">语音语调</view>
+        <view class="item-score">{{intonationScore}}分</view>
+      </view>
+      <view class="item-bar">
+        <view class="bar-fill" style="width: {{intonationScore}}%"></view>
+      </view>
+      <view class="item-feedback">{{intonationFeedback}}</view>
+    </view>
+
+    <!-- 语速节奏 -->
+    <view class="analysis-item">
+      <view class="item-header">
+        <view class="item-title">语速节奏</view>
+        <view class="item-score">{{rhythmScore}}分</view>
+      </view>
+      <view class="item-bar">
+        <view class="bar-fill" style="width: {{rhythmScore}}%"></view>
+      </view>
+      <view class="item-feedback">{{rhythmFeedback}}</view>
+    </view>
+
+    <!-- 流利度 -->
+    <view class="analysis-item">
+      <view class="item-header">
+        <view class="item-title">流利度</view>
+        <view class="item-score">{{fluencyScore}}分</view>
+      </view>
+      <view class="item-bar">
+        <view class="bar-fill" style="width: {{fluencyScore}}%"></view>
+      </view>
+      <view class="item-feedback">{{fluencyFeedback}}</view>
+    </view>
+  </view>
+
+  <!-- 改进建议 -->
+  <view class="improvement-suggestions">
+    <view class="section-title">改进建议</view>
+    <view class="suggestions-list">
+      <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="id">
+        <view class="suggestion-icon">{{item.icon}}</view>
+        <view class="suggestion-content">
+          <view class="suggestion-title">{{item.title}}</view>
+          <view class="suggestion-desc">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 练习建议 -->
+  <view class="practice-suggestions">
+    <view class="section-title">练习建议</view>
+    <view class="practice-list">
+      <view class="practice-item" wx:for="{{practiceSuggestions}}" wx:key="id" bindtap="startPractice" data-id="{{item.id}}">
+        <view class="practice-icon">{{item.icon}}</view>
+        <view class="practice-content">
+          <view class="practice-title">{{item.title}}</view>
+          <view class="practice-desc">{{item.description}}</view>
+          <view class="practice-difficulty">难度: {{item.difficulty}}</view>
+        </view>
+        <view class="practice-arrow">></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <view class="action-btn retry-btn" bindtap="retryPractice">
+      <text class="btn-text">重新练习</text>
+    </view>
+    <view class="action-btn next-btn" bindtap="nextPractice">
+      <text class="btn-text">下一题</text>
+    </view>
+  </view>
+</view>

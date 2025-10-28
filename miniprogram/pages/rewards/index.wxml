@@ -1,0 +1,153 @@
+<!--奖励中心页面-->
+<view class="container">
+  <!-- 顶部信息 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="title">奖励中心</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <!-- 用户积分信息 -->
+  <view class="user-score">
+    <view class="score-card">
+      <view class="score-icon">💎</view>
+      <view class="score-info">
+        <view class="score-number">{{totalScore}}</view>
+        <view class="score-label">总积分</view>
+      </view>
+      <view class="level-info">
+        <view class="level-text">Lv.{{userLevel}}</view>
+        <view class="level-progress">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{levelProgress}}%"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就系统 -->
+  <view class="achievements">
+    <view class="section-title">🏆 成就徽章</view>
+    <view class="achievement-grid">
+      <view class="achievement-item {{item.unlocked ? 'unlocked' : 'locked'}}" 
+            wx:for="{{achievements}}" 
+            wx:key="id"
+            bindtap="viewAchievement" 
+            data-id="{{item.id}}">
+        <view class="achievement-icon">
+          <image src="{{item.icon}}" class="icon-img" wx:if="{{item.unlocked}}"></image>
+          <text class="lock-icon" wx:else>🔒</text>
+        </view>
+        <view class="achievement-name">{{item.name}}</view>
+        <view class="achievement-desc">{{item.description}}</view>
+        <view class="achievement-reward" wx:if="{{item.unlocked}}">+{{item.reward}}积分</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 饰品商店 -->
+  <view class="shop">
+    <view class="section-title">🎨 饰品商店</view>
+    <view class="shop-tabs">
+      <view class="tab-item {{currentTab === 'avatar' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="avatar">头像框</view>
+      <view class="tab-item {{currentTab === 'background' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="background">背景</view>
+      <view class="tab-item {{currentTab === 'effects' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="effects">特效</view>
+    </view>
+
+    <!-- 头像框 -->
+    <view class="shop-content" wx:if="{{currentTab === 'avatar'}}">
+      <view class="item-list">
+        <view class="shop-item {{item.owned ? 'owned' : ''}}" 
+              wx:for="{{avatarFrames}}" 
+              wx:key="id"
+              bindtap="buyItem" 
+              data-item="{{item}}">
+          <view class="item-preview">
+            <image src="{{item.preview}}" class="preview-img"></image>
+            <view class="owned-badge" wx:if="{{item.owned}}">已拥有</view>
+          </view>
+          <view class="item-info">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-desc">{{item.description}}</view>
+            <view class="item-price">
+              <text class="price-icon">💎</text>
+              <text class="price-number">{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 背景 -->
+    <view class="shop-content" wx:if="{{currentTab === 'background'}}">
+      <view class="item-list">
+        <view class="shop-item {{item.owned ? 'owned' : ''}}" 
+              wx:for="{{backgrounds}}" 
+              wx:key="id"
+              bindtap="buyItem" 
+              data-item="{{item}}">
+          <view class="item-preview">
+            <image src="{{item.preview}}" class="preview-img"></image>
+            <view class="owned-badge" wx:if="{{item.owned}}">已拥有</view>
+          </view>
+          <view class="item-info">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-desc">{{item.description}}</view>
+            <view class="item-price">
+              <text class="price-icon">💎</text>
+              <text class="price-number">{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 特效 -->
+    <view class="shop-content" wx:if="{{currentTab === 'effects'}}">
+      <view class="item-list">
+        <view class="shop-item {{item.owned ? 'owned' : ''}}" 
+              wx:for="{{effects}}" 
+              wx:key="id"
+              bindtap="buyItem" 
+              data-item="{{item}}">
+          <view class="item-preview">
+            <image src="{{item.preview}}" class="preview-img"></image>
+            <view class="owned-badge" wx:if="{{item.owned}}">已拥有</view>
+          </view>
+          <view class="item-info">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-desc">{{item.description}}</view>
+            <view class="item-price">
+              <text class="price-icon">💎</text>
+              <text class="price-number">{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分获取方式 -->
+  <view class="score-ways">
+    <view class="section-title">💡 获取积分</view>
+    <view class="ways-list">
+      <view class="way-item" wx:for="{{scoreWays}}" wx:key="id">
+        <view class="way-icon">{{item.icon}}</view>
+        <view class="way-content">
+          <view class="way-name">{{item.name}}</view>
+          <view class="way-desc">{{item.description}}</view>
+        </view>
+        <view class="way-reward">+{{item.reward}}积分</view>
+      </view>
+    </view>
+  </view>
+</view>

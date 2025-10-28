@@ -1,0 +1,127 @@
+<!--练习页面-->
+<view class="container">
+  <!-- 顶部信息 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="title">{{practiceTitle}}</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <!-- 练习进度 -->
+  <view class="progress-section">
+    <view class="progress-info">
+      <text class="progress-text">练习进度</text>
+      <text class="progress-count">{{currentIndex + 1}}/{{totalCount}}</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{(currentIndex + 1) / totalCount * 100}}%"></view>
+    </view>
+  </view>
+
+  <!-- 练习内容 -->
+  <view class="practice-content">
+    <view class="text-display">
+      <view class="text-title">请跟读以下句子</view>
+      <view class="text-content">{{currentText}}</view>
+      <view class="text-translation">{{currentTranslation}}</view>
+    </view>
+
+    <!-- 录音区域 -->
+    <view class="recording-area">
+      <view class="recording-circle {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording">
+        <view class="circle-inner">
+          <view class="mic-icon">🎤</view>
+        </view>
+        <view class="recording-waves" wx:if="{{isRecording}}">
+          <view class="wave"></view>
+          <view class="wave"></view>
+          <view class="wave"></view>
+        </view>
+      </view>
+      <view class="recording-text">
+        {{isRecording ? '正在录音...' : '点击开始录音'}}
+      </view>
+      <view class="recording-tip">请清晰发音，保持稳定</view>
+    </view>
+
+    <!-- 录音控制 -->
+    <view class="recording-controls" wx:if="{{hasRecorded}}">
+      <view class="control-btn play-btn" bindtap="playRecording">
+        <text class="btn-icon">▶️</text>
+        <text class="btn-text">播放</text>
+      </view>
+      <view class="control-btn score-btn" bindtap="getScore">
+        <text class="btn-icon">📊</text>
+        <text class="btn-text">获取评分</text>
+      </view>
+      <view class="control-btn retry-btn" bindtap="retryRecording">
+        <text class="btn-icon">🔄</text>
+        <text class="btn-text">重新录音</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评分结果 -->
+  <view class="score-result" wx:if="{{showScore}}">
+    <view class="score-header">
+      <view class="score-title">发音评分</view>
+      <view class="score-number">{{score}}</view>
+      <view class="score-level">{{scoreLevel}}</view>
+    </view>
+    
+    <view class="score-details">
+      <view class="detail-item">
+        <view class="detail-label">发音准确度</view>
+        <view class="detail-bar">
+          <view class="detail-fill" style="width: {{accuracy}}%"></view>
+        </view>
+        <view class="detail-value">{{accuracy}}%</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="detail-label">语音语调</view>
+        <view class="detail-bar">
+          <view class="detail-fill" style="width: {{intonation}}%"></view>
+        </view>
+        <view class="detail-value">{{intonation}}%</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="detail-label">语速节奏</view>
+        <view class="detail-bar">
+          <view class="detail-fill" style="width: {{rhythm}}%"></view>
+        </view>
+        <view class="detail-value">{{rhythm}}%</view>
+      </view>
+    </view>
+
+    <view class="score-feedback">
+      <view class="feedback-title">AI建议</view>
+      <view class="feedback-content">{{feedback}}</view>
+    </view>
+
+    <view class="score-actions">
+      <view class="action-btn analysis-btn" bindtap="viewAnalysis">
+        <text class="btn-text">详细分析</text>
+      </view>
+      <view class="action-btn continue-btn" bindtap="continuePractice">
+        <text class="btn-text">继续练习</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-btn prev-btn" bindtap="prevPractice" wx:if="{{currentIndex > 0}}">
+      <text class="btn-text">上一题</text>
+    </view>
+    <view class="nav-btn next-btn" bindtap="nextPractice" wx:if="{{currentIndex < totalCount - 1}}">
+      <text class="btn-text">下一题</text>
+    </view>
+    <view class="nav-btn finish-btn" bindtap="finishPractice" wx:if="{{currentIndex === totalCount - 1}}">
+      <text class="btn-text">完成练习</text>
+    </view>
+  </view>
+</view>

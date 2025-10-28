@@ -1,0 +1,524 @@
+/* 社交功能页面样式 */
+page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  padding: 0 30rpx 60rpx;
+  min-height: 100vh;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx 0 20rpx;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(10rpx);
+}
+
+.back-icon {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.title {
+  color: white;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.placeholder {
+  width: 60rpx;
+}
+
+/* 邀请好友 */
+.invite-section {
+  margin: 40rpx 0;
+}
+
+.invite-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 32rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.invite-icon {
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+
+.invite-content {
+  flex: 1;
+}
+
+.invite-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8rpx;
+}
+
+.invite-desc {
+  font-size: 24rpx;
+  color: rgba(44, 62, 80, 0.7);
+  line-height: 1.4;
+  margin-bottom: 12rpx;
+}
+
+.invite-stats {
+  display: flex;
+  gap: 20rpx;
+}
+
+.invite-count, .invite-reward {
+  font-size: 22rpx;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.invite-btn {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: white;
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.invite-btn:active {
+  transform: scale(0.95);
+}
+
+/* 好友列表 */
+.friends-section {
+  margin: 40rpx 0;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 24rpx;
+  text-align: center;
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.friend-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.friend-item:active {
+  transform: scale(0.98);
+}
+
+.friend-avatar {
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.avatar-img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.online-status {
+  position: absolute;
+  bottom: 2rpx;
+  right: 2rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  border: 2rpx solid white;
+}
+
+.online-status.online {
+  background: #4CAF50;
+}
+
+.online-status.offline {
+  background: #ccc;
+}
+
+.friend-info {
+  flex: 1;
+}
+
+.friend-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4rpx;
+}
+
+.friend-level {
+  font-size: 22rpx;
+  color: #ff6b6b;
+  margin-bottom: 4rpx;
+}
+
+.friend-score {
+  font-size: 20rpx;
+  color: rgba(44, 62, 80, 0.7);
+}
+
+.challenge-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: white;
+  padding: 12rpx 20rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.empty-friends, .empty-challenges {
+  text-align: center;
+  padding: 60rpx 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.empty-icon {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+
+.empty-desc {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+/* 排行榜 */
+.ranking-section {
+  margin: 40rpx 0;
+}
+
+.ranking-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12rpx;
+  padding: 6rpx;
+  margin-bottom: 24rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.ranking-list {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(44, 62, 80, 0.1);
+}
+
+.rank-item:last-child {
+  border-bottom: none;
+}
+
+.rank-item.my-rank {
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin: 0 -20rpx;
+}
+
+.rank-number {
+  width: 60rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.rank-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.rank-icon {
+  font-size: 24rpx;
+  color: rgba(44, 62, 80, 0.6);
+}
+
+.rank-avatar {
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.rank-avatar .avatar-img {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.rank-badge {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  width: 24rpx;
+  height: 24rpx;
+  background: #ff6b6b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon {
+  font-size: 16rpx;
+}
+
+.rank-info {
+  flex: 1;
+}
+
+.rank-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4rpx;
+}
+
+.rank-level {
+  font-size: 20rpx;
+  color: rgba(44, 62, 80, 0.7);
+}
+
+.rank-score {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #ff6b6b;
+}
+
+/* 挑战记录 */
+.challenge-section {
+  margin: 40rpx 0;
+}
+
+.challenge-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.challenge-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.challenge-info {
+  flex: 1;
+}
+
+.challenge-type {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4rpx;
+}
+
+.challenge-opponent {
+  font-size: 22rpx;
+  color: rgba(44, 62, 80, 0.7);
+  margin-bottom: 4rpx;
+}
+
+.challenge-time {
+  font-size: 20rpx;
+  color: rgba(44, 62, 80, 0.5);
+}
+
+.challenge-result {
+  margin: 0 20rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.challenge-result.win {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+}
+
+.challenge-result.lose {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+.challenge-result.draw {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.challenge-score {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.vs-text {
+  color: rgba(44, 62, 80, 0.5);
+}
+
+/* 每日任务 */
+.tasks-section {
+  margin: 40rpx 0;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.task-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.task-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6rpx;
+}
+
+.task-desc {
+  font-size: 22rpx;
+  color: rgba(44, 62, 80, 0.7);
+  line-height: 1.3;
+  margin-bottom: 8rpx;
+}
+
+.task-progress {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6rpx;
+  background: rgba(44, 62, 80, 0.1);
+  border-radius: 3rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  border-radius: 3rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 20rpx;
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.task-reward {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.reward-icon {
+  font-size: 20rpx;
+}
+
+.reward-number {
+  font-size: 24rpx;
+  color: #ff6b6b;
+  font-weight: 600;
+}
