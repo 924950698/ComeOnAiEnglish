@@ -1,14 +1,187 @@
-# ComeOnAiEnglish
-AI智能评分、口语跟读训练、发音细节纠正
+# 个人知识分享博客
 
-# 云开发 quickstart
+一个基于 Vue 3 构建的现代化个人知识分享博客网站，支持文字、图片和 YouTube 视频内容。
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+## 功能特性
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+- ✨ 现代化的 UI 设计，响应式布局
+- 📝 文章列表、详情展示
+- 🏷️ 文章分类和标签系统
+- 🔍 全文搜索功能
+- 📺 YouTube 视频嵌入支持
+- 📱 移动端适配
+- 🎨 左侧导航栏，可折叠
+- ⚡ 基于 Vite 的快速开发体验
 
-## 参考文档
+## 技术栈
 
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+- **Vue 3** - 渐进式 JavaScript 框架
+- **Vue Router** - 官方路由管理器
+- **Element Plus** - Vue 3 组件库
+- **Tailwind CSS** - 实用优先的 CSS 框架
+- **Vite** - 下一代前端构建工具
+- **Day.js** - 轻量级日期处理库
+
+## 项目结构
+
+```
+frontend/
+├── src/
+│   ├── components/          # 组件
+│   │   ├── ArticleCard.vue  # 文章卡片组件
+│   │   └── YouTubeVideo.vue # YouTube 视频组件
+│   ├── views/               # 页面视图
+│   │   ├── Home.vue         # 首页
+│   │   ├── Articles.vue     # 文章列表
+│   │   ├── ArticleDetail.vue # 文章详情
+│   │   ├── Category.vue     # 分类页面
+│   │   ├── Tag.vue          # 标签页面
+│   │   ├── Search.vue       # 搜索页面
+│   │   └── About.vue        # 关于页面
+│   ├── layouts/             # 布局组件
+│   │   └── MainLayout.vue   # 主布局（左侧导航 + 内容区）
+│   ├── router/              # 路由配置
+│   │   └── index.js
+│   ├── composables/         # 组合式函数
+│   │   └── useArticles.js   # 文章数据管理
+│   ├── App.vue              # 根组件
+│   ├── main.js              # 入口文件
+│   └── style.css            # 全局样式
+├── index.html
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
+
+## 安装和运行
+
+### 1. 安装依赖
+
+```bash
+cd frontend
+npm install
+```
+
+### 2. 开发模式
+
+```bash
+npm run dev
+```
+
+访问 http://localhost:3000
+
+### 3. 构建生产版本
+
+```bash
+npm run build
+```
+
+构建后的文件在 `dist` 目录中。
+
+### 4. 预览生产构建
+
+```bash
+npm run preview
+```
+
+## 使用说明
+
+### 添加文章
+
+编辑 `src/composables/useArticles.js` 文件，在 `articlesData` 数组中添加新的文章对象：
+
+```javascript
+{
+  id: 7,
+  title: '文章标题',
+  description: '文章描述',
+  content: '<h2>标题</h2><p>内容...</p>',
+  date: '2024-01-20',
+  category: '前端开发',
+  tags: ['Vue', 'JavaScript'],
+  image: '图片URL',
+  featured: true, // 是否精选
+  views: 0,
+  videos: ['youtube视频ID'] // 可选的 YouTube 视频 ID 数组
+}
+```
+
+### 添加 YouTube 视频
+
+在文章的 `videos` 数组中添加 YouTube 视频 ID：
+
+```javascript
+videos: ['dQw4w9WgXcQ'] // 视频 ID 或完整 URL
+```
+
+### 自定义样式
+
+- 全局样式：`src/style.css`
+- Tailwind 配置：`tailwind.config.js`
+- 组件样式：各个 `.vue` 文件中的 `<style>` 部分
+
+### 后端 API 集成
+
+如果需要连接后端 API，可以：
+
+1. 修改 `vite.config.js` 中的代理配置
+2. 在 `src/composables/useArticles.js` 中使用 `axios` 请求数据
+3. 或者创建新的 composable 来管理 API 请求
+
+## 页面说明
+
+### 首页 (/)
+- 展示精选文章和最新文章
+- 提供搜索入口
+
+### 文章列表 (/articles)
+- 显示所有文章
+- 支持按分类筛选
+- 支持排序（最新/标题）
+
+### 文章详情 (/article/:id)
+- 显示完整的文章内容
+- 支持 YouTube 视频嵌入
+- 显示分类、标签、阅读量等信息
+- 提供上一篇/下一篇导航
+
+### 分类页面 (/category/:category)
+- 显示指定分类下的所有文章
+
+### 标签页面 (/tag/:tag)
+- 显示指定标签下的所有文章
+
+### 搜索页面 (/search)
+- 支持全文搜索
+- 搜索结果实时显示
+
+### 关于页面 (/about)
+- 个人简介
+- 技术栈展示
+- 联系方式
+
+## 浏览器支持
+
+- Chrome (最新)
+- Firefox (最新)
+- Safari (最新)
+- Edge (最新)
+
+## 开发计划
+
+- [ ] 添加评论功能
+- [ ] 添加文章归档
+- [ ] 添加 RSS 订阅
+- [ ] 添加暗黑模式
+- [ ] 添加文章分享功能
+- [ ] 优化 SEO
+- [ ] 添加 PWA 支持
+
+## 许可证
+
+MIT
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "加油ai英语老师",
-  "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
-  }
-}
